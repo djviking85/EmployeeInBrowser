@@ -96,6 +96,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     // метод на получение всех чудиков в виде массива
     public List<Employee> getAll() {
         return employeeByHashCode.values().stream().collect(Collectors.toList());
+
     }
 
 }
