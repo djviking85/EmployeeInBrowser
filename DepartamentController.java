@@ -1,10 +1,8 @@
 package pro.sky.employe25.employeers.exceprion;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -20,6 +18,12 @@ import java.util.Map;
         public DepartamentController(DepartamentServiceImp departamentService) {
             this.departamentService = departamentService;
         }
+    @ResponseStatus(HttpStatus.NOT_FOUND) // указываем статус
+    @ExceptionHandler(DepartmentSearchException.class) // какой класс юзаем
+    // чекаем что нам пишет в браузере
+    public String handleException(DepartmentSearchException e) {
+        return String.format("ошибка: %s,  причина: %s", HttpStatus.NOT_FOUND.value(), e.getMessage());
+    }
 
          @GetMapping(path = "/max-salary")
         public Employee maxSalary(@RequestParam  Integer departmentId) {
