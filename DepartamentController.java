@@ -12,7 +12,7 @@ import java.util.Map;
 
 // создаем контроллер на департамент
     @RestController
-    @RequestMapping("/departament")
+    @RequestMapping("/departments")
     public class DepartamentController {
         private final DepartamentService departamentService;
 
@@ -22,16 +22,16 @@ import java.util.Map;
         }
 
          @GetMapping(path = "/max-salary")
-        public Employee maxSalary(@RequestParam ("maxSalary") Integer departamentId) {
-        return departamentService.getEmployeeWithMaxSalary(departamentId);
+        public Employee maxSalary(@RequestParam ("maxSalary") Integer departmentId) {
+        return departamentService.getEmployeeWithMaxSalary(departmentId);
         }
          @GetMapping(path = "/min-salary")
-        public Employee minSalary (@RequestParam Integer departamentId) {
-            return departamentService.getEmployeeWithMinSalary(departamentId);
+        public Employee minSalary (@RequestParam Integer departmentId) {
+            return departamentService.getEmployeeWithMinSalary(departmentId);
         }
         @GetMapping(path = "/all")
-        public Map<String, List<Employee>> allByDepId (@RequestParam (required = false) Integer departamentId) {
-            return departamentService.getAll(departamentId);
+        public Map<String, List<Employee>> allByDepId (@RequestParam (required = false) Integer departmentId) {
+            return departamentService.getAll(departmentId);
         }
 
 

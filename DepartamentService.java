@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 public interface DepartamentService {
-    Employee getEmployeeWithMinSalary(int departamentId);
+    Employee getEmployeeWithMinSalary(int departmentId);
 
-    Employee getEmployeeWithMaxSalary(int departamentId);
+    Employee getEmployeeWithMaxSalary(int departmentId);
 
-    Map<String, List<Employee>> getAll(Integer departamentId);
+    Map<String, List<Employee>> getAll(Integer departmentId);
 }

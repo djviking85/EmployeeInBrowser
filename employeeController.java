@@ -48,8 +48,8 @@ public class employeeController {
     public Employee addEmployer(@RequestParam("firstName") String firstName,
                                 @RequestParam("lastName") String lastName,
                                 @RequestParam("salary") float salary,
-                                @RequestParam("departamentId") int departamentId) {
-        return employeeService.add(firstName, lastName, salary, departamentId);
+                                @RequestParam("departmentId") int departmentId) {
+        return employeeService.add(firstName, lastName, salary, departmentId);
     }
 
     @GetMapping(path = "/find")

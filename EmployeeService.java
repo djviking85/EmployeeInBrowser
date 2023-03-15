@@ -3,7 +3,7 @@ package pro.sky.employe25.employeers.exceprion;
 import java.util.List;
 
 public interface EmployeeService {
-    Employee add(String firstName, String lastName, float salary, int departamentId);
+    Employee add(String firstName, String lastName, float salary, int departmentId);
 
     Employee find(String firstName, String lastName);
 

@@ -17,13 +17,13 @@ public class DepartamentServiceImp implements DepartamentService {
         this.employeeService = employeeService;
     }
 @Override
-    public Employee getEmployeeWithMinSalary(int departamentId) {
+    public Employee getEmployeeWithMinSalary(int departmentId) {
         List<Employee> allEmployes = employeeService.getAll();
         float minSalary = Float.MAX_VALUE;
         Employee employeeInDepWithMinSalary = null;
 
         for (Employee e : allEmployes) {
-            if (e.getDepartament().getId() == departamentId && e.getSalary() < minSalary) {
+            if (e.getDepartament().getId() == departmentId && e.getSalary() < minSalary) {
                 minSalary = e.getSalary();
                 employeeInDepWithMinSalary = e;
             }
@@ -33,13 +33,13 @@ public class DepartamentServiceImp implements DepartamentService {
 
     }
 @Override
-    public Employee getEmployeeWithMaxSalary(int departamentId) {
+    public Employee getEmployeeWithMaxSalary(int departmentId) {
     List<Employee> allEmployes = employeeService.getAll();
     float maxSalary = Float.MAX_VALUE;
     Employee employeeInDepWithMaxSalary = null;
 
     for (Employee e : allEmployes) {
-        if (e.getDepartament().getId() == departamentId && e.getSalary() < maxSalary) {
+        if (e.getDepartament().getId() == departmentId && e.getSalary() < maxSalary) {
             maxSalary = e.getSalary();
             employeeInDepWithMaxSalary = e;
         }
@@ -49,14 +49,14 @@ public class DepartamentServiceImp implements DepartamentService {
 
     }
     @Override
-    public Map<String, List<Employee>> getAll(Integer departamentId) {
+    public Map<String, List<Employee>> getAll(Integer departmentId) {
         List<Employee> allEmployees = employeeService.getAll();
-        if (departamentId == null) {
+        if (departmentId == null) {
             return groupEmployeeByDepartament(allEmployees);
         }
         List<Employee> result = new ArrayList<>();
         for (Employee e : allEmployees) {
-            if (e.getDepartament().getId() == departamentId) {
+            if (e.getDepartament().getId() == departmentId) {
                 result.add(e);
 
             }
