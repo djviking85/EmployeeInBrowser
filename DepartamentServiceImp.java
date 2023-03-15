@@ -10,10 +10,10 @@ import java.util.Map;
 
 @Service
 public class DepartamentServiceImp implements DepartamentService {
-    private final EmployeeService employeeService;
+    private final EmployeeServiceImpl employeeService;
 
     @Autowired
-    public DepartamentServiceImp(EmployeeService employeeService) {
+    public DepartamentServiceImp(EmployeeServiceImpl employeeService) {
         this.employeeService = employeeService;
     }
 @Override

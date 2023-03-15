@@ -20,12 +20,13 @@ import java.util.Map;
         public DepartamentController(DepartamentServiceImp departamentService) {
             this.departamentService = departamentService;
         }
-        @GetMapping(path = "/max-salary")
-        public Employee maxSalary (@RequestParam Integer departamentId) {
-            return departamentService.getEmployeeWithMaxSalary(departamentId);
+
+         @GetMapping(path = "/max-salary")
+        public Employee maxSalary(@RequestParam ("maxSalary") Integer departamentId) {
+        return departamentService.getEmployeeWithMaxSalary(departamentId);
         }
-        @GetMapping(path = "/min-salary")
-        public Employee maxSalary (@RequestParam Integer departamentId) {
+         @GetMapping(path = "/min-salary")
+        public Employee minSalary (@RequestParam Integer departamentId) {
             return departamentService.getEmployeeWithMinSalary(departamentId);
         }
         @GetMapping(path = "/all")
@@ -34,7 +35,7 @@ import java.util.Map;
         }
 
 
-        }
+    }
 
 
 

@@ -29,11 +29,11 @@ public class employeeController {
         return String.format("ошибка: %s,  причина: %s", HttpStatus.NOT_FOUND.value(), e.getMessage());
     }
 
-    private final EmployeeService employeeService;
+    private final EmployeeServiceImpl employeeService;
 
 
     @Autowired // инжектим автовайредом
-    public employeeController(EmployeeService employeeService) {
+    public employeeController(EmployeeServiceImpl employeeService) {
         this.employeeService = employeeService;
 
     }
