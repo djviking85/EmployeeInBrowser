@@ -7,6 +7,17 @@ public class Employee {
     private String firstName;
     private String lastName;
 
+    public float getSalary() {
+        return salary;
+    }
+
+    public void setSalary(float salary) {
+        this.salary = salary;
+    }
+
+    private float salary;
+    private Departament departament;
+
     public String getFirstNameEmployer() {
         return firstName;
     }
@@ -14,9 +25,11 @@ public class Employee {
         return lastName;
     }
 
-    public Employee (String firstName, String lastName) {
+    public Employee (String firstName, String lastName, float salary, Departament departament) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.departament = departament;
+        this.salary = salary;
 
     }
 
