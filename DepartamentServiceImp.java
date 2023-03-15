@@ -86,12 +86,14 @@ public class DepartamentServiceImp implements DepartamentService {
         // convert to Stream
         return employeeService.getAll().stream()
                 // фильтруем если айди департамента не равно нулю, то мы фильтруем по предикату депортамента айди
-                .filter(employee -> departmentId != null || employee.getDepartament().getId() == departmentId)
+                .filter(employee -> departmentId != null ? employee.getDepartament().getId() == departmentId:true)
                 // делаем группировку через коллектор
                 .collect(Collectors.groupingBy(employee -> employee.getDepartament().getName(),
                         Collectors.mapping(e -> e, Collectors.toList())));
     }
-// группируем сотрудников по отделам
+// группируем сотрудников по отделам/
+    // нам уже нижний метод не нужен
+
 //    private Map<String, List<Employee>> groupEmployeeByDepartament(List<Employee> employees) {
 //        Map<String, List<Employee>> employersByDeportament = new HashMap<>();
 //        // проходим по сотрудникам
