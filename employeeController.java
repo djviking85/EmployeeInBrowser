@@ -45,8 +45,11 @@ public class employeeController {
 
     //  пишем гетмапы на адд файнд ремув и гет оллh
     @GetMapping(path = "/add")
-    public Employee addEmployer(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
-        return employeeService.add(firstName, lastName);
+    public Employee addEmployer(@RequestParam("firstName") String firstName,
+                                @RequestParam("lastName") String lastName,
+                                @RequestParam("salary") float salary,
+                                @RequestParam("departamentId") int departamentId) {
+        return employeeService.add(firstName, lastName, salary, departamentId);
     }
 
     @GetMapping(path = "/find")

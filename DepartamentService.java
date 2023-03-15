@@ -1,42 +1,12 @@
 package pro.sky.employe25.employeers.exceprion;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.Map;
 
-@Service
-public class DepartamentService {
-    private final EmployeeService employeeService;
+public interface DepartamentService {
+    Employee getEmployeeWithMinSalary(int departamentId);
 
-    @Autowired
-    public DepartamentService(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
-@Override
-    public Employee getEmployeeWithMinSalary(int departamentId) {
-        List<Employee> allEmployes = employeeService.getAll();
-        float minSalary = Float.MAX_VALUE;
-        Employee employeeInDepWithMinSalary = null;
+    Employee getEmployeeWithMaxSalary(int departamentId);
 
-        for (Employee e : allEmployes) {
-            if (e.getDepartament().getId() == departamentId && e.getSalary() < minSalary) {
-                minSalary = e.getSalary();
-                employeeInDepWithMinSalary = e;
-            }
-            
-        }
-        return employeeInDepWithMinSalary;
-
-    }
-@Override
-    public Employee getEmployeeWithMaxSalary(int departamentId) {
-
-    }
-    @Override
-    public Employee getAll(int departamentId) {
-
-
-    }
-
+    Map<String, List<Employee>> getAll(Integer departamentId);
 }

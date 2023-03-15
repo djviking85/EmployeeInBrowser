@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Map;
 
-import static com.sun.beans.introspect.PropertyInfo.Name.required;
-
 
 // создаем контроллер на департамент
     @RestController
@@ -19,23 +17,24 @@ import static com.sun.beans.introspect.PropertyInfo.Name.required;
         private final DepartamentService departamentService;
 
         @Autowired
-        public DepartamentController(DepartamentService departamentService) {
+        public DepartamentController(DepartamentServiceImp departamentService) {
             this.departamentService = departamentService;
         }
         @GetMapping(path = "/max-salary")
-        public Employee maxSalary (RequestParam Integer departamentId) {
+        public Employee maxSalary (@RequestParam Integer departamentId) {
             return departamentService.getEmployeeWithMaxSalary(departamentId);
         }
         @GetMapping(path = "/min-salary")
-        public Employee maxSalary (RequestParam Integer departamentId) {
+        public Employee maxSalary (@RequestParam Integer departamentId) {
             return departamentService.getEmployeeWithMinSalary(departamentId);
         }
         @GetMapping(path = "/all")
-        public Map<String, List<Employee>> allByDepId (RequestParam (required = false) Integer departamentId) {
+        public Map<String, List<Employee>> allByDepId (@RequestParam (required = false) Integer departamentId) {
             return departamentService.getAll(departamentId);
         }
 
 
         }
-    }
+
+
 
