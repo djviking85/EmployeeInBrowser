@@ -6,6 +6,19 @@ public class Employee {
     // создадим переменные, которые участвуют в конструкторе
     private String firstName;
     private String lastName;
+    private float salary;
+    private Departament departament;
+
+
+    public Departament getDepartament() {
+        return departament;
+    }
+
+    public void setDepartament(Departament departament) {
+        this.departament = departament;
+    }
+
+
 
     public float getSalary() {
         return salary;
@@ -15,8 +28,7 @@ public class Employee {
         this.salary = salary;
     }
 
-    private float salary;
-    private Departament departament;
+
 
     public String getFirstNameEmployer() {
         return firstName;

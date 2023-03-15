@@ -16,11 +16,13 @@ public class employeeController {
     public String handleException(EmployeeNotFoundException e) {
         return String.format("ошибка: %s,  причина: %s", HttpStatus.NOT_FOUND.value(), e.getMessage());
     }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(EmployeeAlreadyAddedException.class)
     public String handleException(EmployeeAlreadyAddedException e) {
         return String.format("ошибка: %s,  причина: %s", HttpStatus.BAD_REQUEST.value(), e.getMessage());
     }
+
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(EmployeeStorageIsFullException.class)
     public String handleException(EmployeeStorageIsFullException e) {
@@ -30,30 +32,38 @@ public class employeeController {
     private final EmployeeService employeeService;
 
 
-       @Autowired // инжектим автовайредом
-       public employeeController(EmployeeService employeeService) {
-         this.employeeService = employeeService;
+    @Autowired // инжектим автовайредом
+    public employeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
 
-       }
+    }
+
     @GetMapping()
     public String hello() {
         return "Добро пожаловать в списки типов!";
     }
+
     //  пишем гетмапы на адд файнд ремув и гет оллh
     @GetMapping(path = "/add")
-    public Employee addEmployer(@RequestParam("firstName") String firstName, @RequestParam ("lastName") String lastName) {
+    public Employee addEmployer(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
         return employeeService.add(firstName, lastName);
     }
-    @GetMapping(path ="/find")
-    public Employee findEmployer(@RequestParam ("firstName") String firstName, @RequestParam ("lastName") String lastName) {
+
+    @GetMapping(path = "/find")
+    public Employee findEmployer(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
         return employeeService.find(firstName, lastName);
     }
-    @GetMapping(path ="/remove")
-    public Employee removeEmployer(@RequestParam ("firstName") String firstName, @RequestParam ("lastName") String lastName) {
+
+    @GetMapping(path = "/remove")
+    public Employee removeEmployer(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
         return employeeService.remove(firstName, lastName);
     }
-    @GetMapping(path ="/findAll")
+
+    @GetMapping(path = "/findAll")
     public List<Employee> getEmployers() {
         return employeeService.getAll();
     }
+
+
+
 }
