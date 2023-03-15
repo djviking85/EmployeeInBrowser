@@ -40,6 +40,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
 
+
     }
     // переводим в лист формат
     private final Map<Integer, Employee> employeeByHashCode = new HashMap<>();
@@ -95,7 +96,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 @Override
     // метод на получение всех чудиков в виде массива
     public List<Employee> getAll() {
-        return employeeByHashCode.values().stream().collect(Collectors.toList());
+      //  return employeeByHashCode.values().stream().collect(Collectors.toList());
+    return employees;
 
     }
 

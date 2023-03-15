@@ -19,6 +19,9 @@ public class DepartamentServiceImp implements DepartamentService {
 @Override
     public Employee getEmployeeWithMinSalary(int departmentId) {
         List<Employee> allEmployes = employeeService.getAll();
+        // convert to Stream
+        allEmployes.stream()
+
         float minSalary = Float.MAX_VALUE;
         Employee employeeInDepWithMinSalary = null;
 

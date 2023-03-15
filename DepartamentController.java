@@ -22,7 +22,7 @@ import java.util.Map;
         }
 
          @GetMapping(path = "/max-salary")
-        public Employee maxSalary(@RequestParam ("maxSalary") Integer departmentId) {
+        public Employee maxSalary(@RequestParam  Integer departmentId) {
         return departamentService.getEmployeeWithMaxSalary(departmentId);
         }
          @GetMapping(path = "/min-salary")
