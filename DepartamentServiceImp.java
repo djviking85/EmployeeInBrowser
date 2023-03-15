@@ -18,37 +18,55 @@ public class DepartamentServiceImp implements DepartamentService {
     }
 @Override
     public Employee getEmployeeWithMinSalary(int departmentId) {
-        List<Employee> allEmployes = employeeService.getAll();
-        // convert to Stream
-        allEmployes.stream()
+ //      List<Employee> allEmployes = employeeService.getAll();
+//
+//
+//        float minSalary = Float.MAX_VALUE;
+//        Employee employeeInDepWithMinSalary = null;
+//
+//        for (Employee e : allEmployes) {
+//            if (e.getDepartament().getId() == departmentId && e.getSalary() < minSalary) {
+//                minSalary = e.getSalary();
+//                employeeInDepWithMinSalary = e;
+//            }
+            // convert to Stream
+    //возвращаем стримом через получить всех в емпл сервисе
+            return    employeeService.getAll().stream()
+                    //фильтр с условиями фильтрации по депортаменту
+                    .filter(employee -> employee.getDepartament().getId() == departmentId)
+                    // значение минимальной зарплаты, лямбда функция через компортатор
+                    .min((e1, e2) -> Float.compare(e1.getSalary(), e2.getSalary()))
+                    // возвращает или null или сотрудника
+                    .get();
 
-        float minSalary = Float.MAX_VALUE;
-        Employee employeeInDepWithMinSalary = null;
 
-        for (Employee e : allEmployes) {
-            if (e.getDepartament().getId() == departmentId && e.getSalary() < minSalary) {
-                minSalary = e.getSalary();
-                employeeInDepWithMinSalary = e;
-            }
             
         }
-        return employeeInDepWithMinSalary;
+ //       return employeeInDepWithMinSalary;
 
-    }
+
 @Override
     public Employee getEmployeeWithMaxSalary(int departmentId) {
-    List<Employee> allEmployes = employeeService.getAll();
-    float maxSalary = Float.MAX_VALUE;
-    Employee employeeInDepWithMaxSalary = null;
-
-    for (Employee e : allEmployes) {
-        if (e.getDepartament().getId() == departmentId && e.getSalary() < maxSalary) {
-            maxSalary = e.getSalary();
-            employeeInDepWithMaxSalary = e;
-        }
-
-    }
-    return employeeInDepWithMaxSalary;
+//    List<Employee> allEmployes = employeeService.getAll();
+//    float maxSalary = Float.MAX_VALUE;
+//    Employee employeeInDepWithMaxSalary = null;
+//
+//    for (Employee e : allEmployes) {
+//        if (e.getDepartament().getId() == departmentId && e.getSalary() < maxSalary) {
+//            maxSalary = e.getSalary();
+//            employeeInDepWithMaxSalary = e;
+//        }
+//
+//    }
+//    return employeeInDepWithMaxSalary;
+    // стримим по аналогу с мин салари
+    return    employeeService.getAll().stream()
+            //фильтр с условиями фильтрации по депортаменту
+            .filter(employee -> employee.getDepartament().getId() == departmentId)
+            // значение максимальной зарплаты, лямбда функция через компортатор
+            .min((e1, e2) -> Float.compare(e1.getSalary(), e2.getSalary()))
+            // возвращает или null или сотрудника
+            .get();
 
     }
     @Override
