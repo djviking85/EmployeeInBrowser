@@ -1,4 +1,4 @@
-package pro.sky.employe25.employeers.exceprion;
+package pro.sky.employe25.employeers.Employer.Model;
 
 import java.util.HashMap;
 import java.util.Map;

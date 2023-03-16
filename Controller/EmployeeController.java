@@ -1,14 +1,19 @@
-package pro.sky.employe25.employeers.exceprion;
+package pro.sky.employe25.employeers.Employer.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import pro.sky.employe25.employeers.Employer.Model.Employee;
+import pro.sky.employe25.employeers.Employer.Service.EmployeeServiceImpl;
+import pro.sky.employe25.employeers.Employer.Exceptions.EmployeeAlreadyAddedException;
+import pro.sky.employe25.employeers.Employer.Exceptions.EmployeeNotFoundException;
+import pro.sky.employe25.employeers.Employer.Exceptions.EmployeeStorageIsFullException;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
-public class employeeController {
+public class EmployeeController {
     // делаем красиво ошибки в браузере
     @ResponseStatus(HttpStatus.NOT_FOUND) // указываем статус
     @ExceptionHandler(EmployeeNotFoundException.class) // какой класс юзаем
@@ -33,7 +38,7 @@ public class employeeController {
 
 
     @Autowired // инжектим автовайредом
-    public employeeController(EmployeeServiceImpl employeeService) {
+    public EmployeeController(EmployeeServiceImpl employeeService) {
         this.employeeService = employeeService;
 
     }

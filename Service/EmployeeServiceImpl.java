@@ -1,11 +1,14 @@
-package pro.sky.employe25.employeers.exceprion;
+package pro.sky.employe25.employeers.Employer.Service;
 
 import org.springframework.stereotype.Service;
+import pro.sky.employe25.employeers.Employer.Model.Employee;
+import pro.sky.employe25.employeers.Employer.Exceptions.EmployeeAlreadyAddedException;
+import pro.sky.employe25.employeers.Employer.Exceptions.EmployeeNotFoundException;
+import pro.sky.employe25.employeers.Employer.Exceptions.EmployeeStorageIsFullException;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
-import static pro.sky.employe25.employeers.exceprion.Departament.DEPARTAMENT_MAP_ID;
+import static pro.sky.employe25.employeers.Employer.Model.Departament.DEPARTAMENT_MAP_ID;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {

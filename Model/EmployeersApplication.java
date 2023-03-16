@@ -1,4 +1,4 @@
-package pro.sky.employe25.employeers.exceprion;
+package pro.sky.employe25.employeers.Employer.Model;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
