@@ -22,9 +22,9 @@ import java.util.Map;
         public DepartamentController(DepartamentServiceImp departamentService) {
             this.departamentService = departamentService;
         }
-    @ResponseStatus(HttpStatus.NOT_FOUND) // указываем статус
-    @ExceptionHandler(DepartmentSearchException.class) // какой класс юзаем
-    // чекаем что нам пишет в браузере
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(DepartmentSearchException.class)
+
     public String handleException(DepartmentSearchException e) {
         return String.format("ошибка: %s,  причина: %s", HttpStatus.NOT_FOUND.value(), e.getMessage());
     }

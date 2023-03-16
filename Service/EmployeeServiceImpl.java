@@ -13,7 +13,6 @@ import static pro.sky.employe25.employeers.Employer.Model.Departament.DEPARTAMEN
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    // устанавливаем лимит на сотрудников, пусть их будет 10, ,было 3
     private final int maxEmployersNumbers = 10;
     private static List<Employee> employees = new ArrayList<>();
     static {
@@ -41,27 +40,20 @@ public class EmployeeServiceImpl implements EmployeeService {
         employees.add(managers3);
         employees.add(managers4);
 
-
-
-
     }
-    // переводим в лист формат
     private final Map<Integer, Employee> employeeByHashCode = new HashMap<>();
 
     private int getEmployeeKey(String firstName, String lastName) {
         return Objects.hash(firstName, lastName);
     }
     @Override
-    // метод на добавление сотрудника
     public Employee add(String firstName, String lastName, float salary, int departamentId) {
         Employee employee = new Employee(firstName, lastName, salary, DEPARTAMENT_MAP_ID.get(departamentId));
 
         if (employeeByHashCode.size() == maxEmployersNumbers) {
-            // прокидываем ошибку если слишком много людкй
             throw new EmployeeStorageIsFullException(" Людей слишком много");
         }
         int employeeKey = getEmployeeKey(firstName, lastName);
-        // прокидываем на ошибку если не нуль и если есть такой тип и переводим в лист формат
         if (employeeByHashCode.containsKey(employeeKey)) {
             throw new EmployeeAlreadyAddedException(" такой тип уже есть");
         }
@@ -70,10 +62,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employee;
     }
     @Override
-    // метод на поиск сотрудника
-    public Employee find(String firstName, String lastName) {
 
-  //      Employee employeeForSearch =  new Employee();
+    public Employee find(String firstName, String lastName) {
         int employeeHashCode = getEmployeeKey(firstName, lastName);
 
         Employee employee = employeeByHashCode.get(employeeHashCode);
@@ -82,24 +72,18 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new EmployeeNotFoundException(" при поиске сотрудник не найден.");
         }
         return employee;
-
     }
 @Override
-    // метод на ремув сотрудников из базы
     public Employee remove(String firstName, String lastName) {
         int employeeHashCode = getEmployeeKey(firstName, lastName);
-        // сначала ищем есть ли у нас он
         Employee employee = employeeByHashCode.remove(employeeHashCode);
-        // переводим в лист формат
         if (employee == null) {
             throw new EmployeeNotFoundException(" при поиске сотрудник не найден.");
         }
         return employee;
     }
 @Override
-    // метод на получение всех чудиков в виде массива
     public List<Employee> getAll() {
-      //  return employeeByHashCode.values().stream().collect(Collectors.toList());
     return employees;
 
     }

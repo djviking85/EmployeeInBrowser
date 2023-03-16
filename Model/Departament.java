@@ -28,7 +28,6 @@ public class Departament {
     public void setName(String name) {
         this.name = name;
     }
-// обозначаем и указываем какие у нас есть депортаменты по айди (1 - номер, 2- название депа)
     public static final Map<Integer, Departament> DEPARTAMENT_MAP_ID;
     static {
         DEPARTAMENT_MAP_ID = new HashMap<>();

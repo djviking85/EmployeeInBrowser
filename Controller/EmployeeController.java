@@ -14,10 +14,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
-    // делаем красиво ошибки в браузере
-    @ResponseStatus(HttpStatus.NOT_FOUND) // указываем статус
-    @ExceptionHandler(EmployeeNotFoundException.class) // какой класс юзаем
-    // чекаем что нам пишет в браузере
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(EmployeeNotFoundException.class)
+
     public String handleException(EmployeeNotFoundException e) {
         return String.format("ошибка: %s,  причина: %s", HttpStatus.NOT_FOUND.value(), e.getMessage());
     }
@@ -37,7 +37,7 @@ public class EmployeeController {
     private final EmployeeServiceImpl employeeService;
 
 
-    @Autowired // инжектим автовайредом
+    @Autowired
     public EmployeeController(EmployeeServiceImpl employeeService) {
         this.employeeService = employeeService;
 
@@ -48,7 +48,6 @@ public class EmployeeController {
         return "Добро пожаловать в списки типов!";
     }
 
-    //  пишем гетмапы на адд файнд ремув и гет оллh
     @GetMapping(path = "/add")
     public Employee addEmployer(@RequestParam("firstName") String firstName,
                                 @RequestParam("lastName") String lastName,
