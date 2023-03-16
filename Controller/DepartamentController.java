@@ -11,8 +11,6 @@ import pro.sky.employe25.employeers.Employer.Exceptions.DepartmentSearchExceptio
 import java.util.List;
 import java.util.Map;
 
-
-// создаем контроллер на департамент
     @RestController
     @RequestMapping("/departments")
     public class DepartamentController {
