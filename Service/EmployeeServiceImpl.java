@@ -48,11 +48,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
     @Override
     public Employee add(String firstName, String lastName, float salary, int departamentId) {
-        Employee employee = new Employee(firstName, lastName, salary, DEPARTAMENT_MAP_ID.get(departamentId));
 
         if (employeeByHashCode.size() == maxEmployersNumbers) {
             throw new EmployeeStorageIsFullException(" Людей слишком много");
         }
+        Employee employee = new Employee(firstName, lastName, salary, DEPARTAMENT_MAP_ID.get(departamentId));
+
+
         int employeeKey = getEmployeeKey(firstName, lastName);
         if (employeeByHashCode.containsKey(employeeKey)) {
             throw new EmployeeAlreadyAddedException(" такой тип уже есть");
