@@ -1,4 +1,4 @@
-package pro.sky.employe25.employeers.Employer.Model;
+package pro.sky.employe25.employeers.Employer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
