@@ -3,6 +3,7 @@ package pro.sky.employe25.employeers.Employer.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import pro.sky.employe25.employeers.Employer.Exceptions.IncorrectNameException;
 import pro.sky.employe25.employeers.Employer.Model.Employee;
 import pro.sky.employe25.employeers.Employer.Service.EmployeeServiceImpl;
 import pro.sky.employe25.employeers.Employer.Exceptions.EmployeeAlreadyAddedException;
@@ -33,7 +34,11 @@ public class EmployeeController {
     public String handleException(EmployeeStorageIsFullException e) {
         return String.format("ошибка: %s,  причина: %s", HttpStatus.NOT_FOUND.value(), e.getMessage());
     }
-
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(IncorrectNameException.class)
+    public String handleException(IncorrectNameException e) {
+        return String.format("ошибка: %s,  причина: %s", HttpStatus.NOT_FOUND.value(), e.getMessage());
+    }
     private final EmployeeServiceImpl employeeService;
 
 

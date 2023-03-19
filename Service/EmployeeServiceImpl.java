@@ -1,6 +1,8 @@
 package pro.sky.employe25.employeers.Employer.Service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import pro.sky.employe25.employeers.Employer.Exceptions.IncorrectNameException;
 import pro.sky.employe25.employeers.Employer.Model.Employee;
 import pro.sky.employe25.employeers.Employer.Exceptions.EmployeeAlreadyAddedException;
 import pro.sky.employe25.employeers.Employer.Exceptions.EmployeeNotFoundException;
@@ -48,6 +50,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
     @Override
     public Employee add(String firstName, String lastName, float salary, int departamentId) {
+        if (StringUtils.isEmpty(firstName) || StringUtils.isEmpty(lastName)) {
+            throw new IncorrectNameException("Имя или фамилия не могут быть пустой");
+        }
+
+        // Данные сотрудников записываются с большой буквы
+        // В переданной строке только буквы и только латинские
+
+//
 
         if (employeeByHashCode.size() == maxEmployersNumbers) {
             throw new EmployeeStorageIsFullException(" Людей слишком много");
@@ -89,5 +99,20 @@ public class EmployeeServiceImpl implements EmployeeService {
     return employees;
 
     }
-
+//    public static void main(String[] args) {
+//        String name = "Ivanov";
+//        String empty = "";
+//        String incorrectCapitalize = "iVanov";
+//        String incorrectCapitaloze2 = "ivanov";
+//        String incorrectOnlyAlphobet = "Iva8nov";
+//        String incorOnlyAlphabet2 = "1vanov";
+//        String incorMix = "Ivanov ivan ivaAAn";
+//
+//        String correctName = "Ivanov";
+//
+//        System.out.println(StringUtils.isEmpty(empty));
+//        System.out.println(StringUtils.isEmpty(name));
+//    }
 }
+
+
