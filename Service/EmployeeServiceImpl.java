@@ -55,6 +55,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
         // Данные сотрудников записываются с большой буквы
+        if (!firstName.equals(StringUtils.capitalize(StringUtils.lowerCase(firstName))) || !lastName.equals(StringUtils.capitalize(StringUtils.lowerCase(lastName)))) {
+            throw new IncorrectNameException(" ФИО должно начинаться с заглавной буквы");
+        }
         // В переданной строке только буквы и только латинские
 
 //
