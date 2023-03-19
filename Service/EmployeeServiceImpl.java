@@ -17,6 +17,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private final int maxEmployersNumbers = 10;
     private static List<Employee> employees = new ArrayList<>();
+
     static {
         Employee it1 = new Employee("Алекс", "Сигурдсон", 200000, DEPARTAMENT_MAP_ID.get(1));
         Employee it2 = new Employee("Sam", "Schott", 150000, DEPARTAMENT_MAP_ID.get(1));
@@ -43,22 +44,28 @@ public class EmployeeServiceImpl implements EmployeeService {
         employees.add(managers4);
 
     }
+
     private final Map<Integer, Employee> employeeByHashCode = new HashMap<>();
 
     private int getEmployeeKey(String firstName, String lastName) {
         return Objects.hash(firstName, lastName);
     }
+
     @Override
     public Employee add(String firstName, String lastName, float salary, int departamentId) {
-        if (StringUtils.isEmpty(firstName) || StringUtils.isEmpty(lastName)) {
-            throw new IncorrectNameException("Имя или фамилия не могут быть пустой");
-        }
-
-        // Данные сотрудников записываются с большой буквы
-        if (!firstName.equals(StringUtils.capitalize(StringUtils.lowerCase(firstName))) || !lastName.equals(StringUtils.capitalize(StringUtils.lowerCase(lastName)))) {
-            throw new IncorrectNameException(" ФИО должно начинаться с заглавной буквы");
-        }
-        // В переданной строке только буквы и только латинские
+//        if (StringUtils.isEmpty(firstName) || StringUtils.isEmpty(lastName)) {
+//            throw new IncorrectNameException("Имя или фамилия не могут быть пустой");
+//        }
+//
+//        // Данные сотрудников записываются с большой буквы
+//        if (!firstName.equals(StringUtils.capitalize(StringUtils.lowerCase(firstName))) || !lastName.equals(StringUtils.capitalize(StringUtils.lowerCase(lastName)))) {
+//            throw new IncorrectNameException(" ФИО должно начинаться с заглавной буквы");
+//        }
+//        // В переданной строке только буквы и только латинские
+//        if (StringUtils.isAlpha(firstName) || StringUtils.isAlpha(lastName)) {
+//            throw new IncorrectNameException("в имени и фамилии должны быть только буквы");
+//        }
+        checksNameAndSurname(firstName, lastName);
 
 //
 
@@ -76,10 +83,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         return employee;
     }
+
     @Override
 
     public Employee find(String firstName, String lastName) {
         int employeeHashCode = getEmployeeKey(firstName, lastName);
+        checksNameAndSurname(firstName, lastName);
 
         Employee employee = employeeByHashCode.get(employeeHashCode);
 
@@ -88,8 +97,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         return employee;
     }
-@Override
+
+    @Override
     public Employee remove(String firstName, String lastName) {
+        checksNameAndSurname(firstName, lastName);
         int employeeHashCode = getEmployeeKey(firstName, lastName);
         Employee employee = employeeByHashCode.remove(employeeHashCode);
         if (employee == null) {
@@ -97,25 +108,33 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         return employee;
     }
-@Override
+
+    @Override
     public List<Employee> getAll() {
-    return employees;
+        return employees;
+    }
+
+    private void checksNameAndSurname(String firstName, String lastName) {
+        checksNameException(firstName);
+        checksNameException(lastName);
 
     }
-//    public static void main(String[] args) {
-//        String name = "Ivanov";
-//        String empty = "";
-//        String incorrectCapitalize = "iVanov";
-//        String incorrectCapitaloze2 = "ivanov";
-//        String incorrectOnlyAlphobet = "Iva8nov";
-//        String incorOnlyAlphabet2 = "1vanov";
-//        String incorMix = "Ivanov ivan ivaAAn";
-//
-//        String correctName = "Ivanov";
-//
-//        System.out.println(StringUtils.isEmpty(empty));
-//        System.out.println(StringUtils.isEmpty(name));
-//    }
+
+    //  создаем общий метод на проверку имени
+    private void checksNameException(String name) {
+        if (StringUtils.isEmpty(name)) {
+            throw new IncorrectNameException("Имя или фамилия не могут быть пустой");
+        }
+
+        // Данные сотрудников записываются с большой буквы
+        if (!name.equals(StringUtils.capitalize(StringUtils.lowerCase(name)))) {
+            throw new IncorrectNameException(" ФИО должно начинаться с заглавной буквы");
+        }
+        // В переданной строке только буквы и только латинские
+        if (!StringUtils.isAlpha(name)) {
+            throw new IncorrectNameException("в имени и фамилии должны быть только буквы");
+        }
+    }
 }
 
 
