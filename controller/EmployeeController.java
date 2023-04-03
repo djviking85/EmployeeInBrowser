@@ -1,14 +1,14 @@
-package pro.sky.employe25.employeers.Employer.Controller;
+package pro.sky.employe25.employeers.Employer.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import pro.sky.employe25.employeers.Employer.Exceptions.IncorrectNameException;
-import pro.sky.employe25.employeers.Employer.Model.Employee;
-import pro.sky.employe25.employeers.Employer.Service.EmployeeServiceImpl;
-import pro.sky.employe25.employeers.Employer.Exceptions.EmployeeAlreadyAddedException;
-import pro.sky.employe25.employeers.Employer.Exceptions.EmployeeNotFoundException;
-import pro.sky.employe25.employeers.Employer.Exceptions.EmployeeStorageIsFullException;
+import pro.sky.employe25.employeers.Employer.exceptions.IncorrectNameException;
+import pro.sky.employe25.employeers.Employer.model.Employee;
+import pro.sky.employe25.employeers.Employer.service.EmployeeServiceImpl;
+import pro.sky.employe25.employeers.Employer.exceptions.EmployeeAlreadyAddedException;
+import pro.sky.employe25.employeers.Employer.exceptions.EmployeeNotFoundException;
+import pro.sky.employe25.employeers.Employer.exceptions.EmployeeStorageIsFullException;
 
 import java.util.List;
 

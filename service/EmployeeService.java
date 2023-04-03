@@ -1,6 +1,6 @@
-package pro.sky.employe25.employeers.Employer.Service;
+package pro.sky.employe25.employeers.Employer.service;
 
-import pro.sky.employe25.employeers.Employer.Model.Employee;
+import pro.sky.employe25.employeers.Employer.model.Employee;
 
 import java.util.List;
 
