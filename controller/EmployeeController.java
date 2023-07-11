@@ -20,7 +20,7 @@ public class EmployeeController {
     @ExceptionHandler(EmployeeNotFoundException.class)
 
     public String handleException(EmployeeNotFoundException e) {
-        return String.format("ошибкаа: %s,  причина: %s", HttpStatus.NOT_FOUND.value(), e.getMessage());
+        return String.format("ошибка: %s,  причина: %s", HttpStatus.NOT_FOUND.value(), e.getMessage());
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
