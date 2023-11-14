@@ -1,4 +1,4 @@
-package pro.sky.employe25.employeers.exceprion;
+package pro.sky.employe25.employeers.Employer.Exceptions;
 
 public class EmployeeStorageIsFullException extends RuntimeException {
 
